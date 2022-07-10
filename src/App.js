@@ -5,7 +5,6 @@ import { BrowserRouter,Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-
     return (
         <BrowserRouter>
             <Routes>
@@ -13,7 +12,6 @@ function App() {
                 <Route path="/todo" element={<Todo /> } />
             </Routes>
         </BrowserRouter>
-
     );
 }
 

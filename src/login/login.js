@@ -2,13 +2,18 @@ import '../App.css';
 import Input from '@material-ui/core/Input';
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import AppBar from 'material-ui/AppBar'
 import React, {useState} from 'react';
 import { useNavigate } from "react-router-dom";
+import NavigationBar from "../component/navigationBar";
+import InputAdornment from '@material-ui/core/InputAdornment';
+import IconButton from '@material-ui/core/IconButton';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 function Login() {
     const [username, setUserName] = useState(null);
     const [password, setPassword] = useState(null);
+    const [showPassword, setShowPassword] = useState(false);
     let navigate = useNavigate();
 
     function handleSubmit() {
@@ -24,56 +29,62 @@ function Login() {
         setPassword("");
     }
 
+    function handleClickShowPassword() {
+        setShowPassword(!showPassword);
+    }
+
+    function handleMouseDownPassword (event) {
+        event.preventDefault();
+    }
+
     return (
         <div className="App">
             <MuiThemeProvider>
                 <div className="main-card login-size">
-                    <AppBar title="Login"/>
+                    <NavigationBar title={"LOGIN"}/>
+                    {/*<AppBar title="Login"/>*/}
                     <div className="spacing-div">
-                        <label htmlFor="" className="mandatory">User Name : </label>
+                        <label className="mandatory">User Name : </label>
                         <Input className="mt-3"
                                placeholder="Enter Your User Name"
                                name="userName"
-                               required={true}
                                style={{width: '50%'}}
-                               margin="normal"
                                onChange={(e) => {
                                    setUserName(e.target.value)
                                }}
                                value={username}
-                        />
-                    </div>
-
-                    <div className="spacing-div">
-                        <label htmlFor="" className="mandatory">Password : </label>
-                        <Input className="mt-3"
+                        /><br/>
+                        <label className="mandatory">Password : </label>
+                        <Input className="mt-4"
                                placeholder="Enter Your Password"
                                name="Password"
-                               required={true}
+                               type= "password"
                                style={{width: '50%'}}
-                               margin="normal"
                                value={password}
                                onChange={(e) => {
-                                   console.log("wwww" , e)
                                    setPassword(e.target.value)
                                }}
+                               endAdornment={
+                                   <InputAdornment position="end">
+                                       <IconButton
+                                           aria-label="toggle password visibility"
+                                           onClick={handleClickShowPassword}
+                                           onMouseDown={handleMouseDownPassword}
+                                       >
+                                           {showPassword ? <Visibility/> : <VisibilityOff/>}
+                                       </IconButton>
+                                   </InputAdornment>
+                               }
                         />
-
                     </div>
-
                     <div className="spacing-div">
                         <RaisedButton
                             className="button-style"
                             primary={true}
-                            color="primary"
-                            variant="contained"
                             onClick={handleSubmit}
                         >SUBMIT</RaisedButton>
-
                         <RaisedButton
                             className="mt-3"
-                            color="primary"
-                            variant="contained"
                             onClick={handleClear}
                         >CLEAR</RaisedButton>
                     </div>

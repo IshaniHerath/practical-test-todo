@@ -37,7 +37,6 @@
   }
 }
 
-
 .main-card {
   border-radius: 4px;
   padding: 15px;
@@ -46,7 +45,6 @@
   -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
 }
-
 
 .login-size {
   width: 40%;
@@ -60,7 +58,7 @@
 }
 
 .todo-size {
-  width: 60%;
+  width: 70%;
   text-align: center;
 
   margin-left:auto;
@@ -81,6 +79,10 @@
   margin-top: 30px;
 }
 
+.mandatory::after{
+  content: " * ";
+}
+
 .button-style-todo {
   padding-left: 20px;
   padding-right: 20px;
@@ -89,9 +91,7 @@
 .table-style {
   border-collapse: collapse;
 
-  margin-top: 60px;
-
-  width: 75%;
+  margin-top: 40px;
   text-align: center;
 
   margin-left:auto;
@@ -100,4 +100,23 @@
 
 .table, th,td {
   border: 1px solid;
+}
+
+.header-style {
+  background: #1abcbc;
+  /*padding: 20px;*/
+}
+
+.menu-icon {
+  text-align: left;
+}
+
+.pagination-style {
+  float: right;
+}
+
+.title-name {
+  font-family: "Cambria";
+  font-size: 20px;
+  padding-left: 40%;
 }
